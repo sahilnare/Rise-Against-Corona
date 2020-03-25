@@ -109,7 +109,7 @@ class Register extends Component {
           console.log(cred.user)
           cred.user.sendEmailVerification().then(function() {
           }).catch(err => console.log(err));
-          this.props.firebase.addUser({name: this.state.name, email: this.state.email})
+          this.props.firebase.addUser({id: cred.user.uid, name: this.state.name, email: this.state.email})
             .catch(err => console.log(err))
           this.setState({
             name: "",

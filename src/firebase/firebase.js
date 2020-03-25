@@ -25,18 +25,22 @@ const Firebase = {
     return firebase.auth().onAuthStateChanged(user)
   },
   // firestore
-  createNewUser: userData => {
+  sendRequest: (userId) => {
     return firebase
       .firestore()
-      .collection('askdds')
-      .doc(`${userData.uid}`)
-      .set(userData)
+      .collection('users')
+      .doc(userId)
+      .set({
+        requestSent: true
+      }, {merge: true})
   },
   addUser: user => {
     return firebase
       .firestore()
       .collection('users')
+      .doc(user.id)
       .add({
+        id: user.id,
         name: user.name,
         email: user.email,
       })

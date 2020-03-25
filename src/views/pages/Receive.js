@@ -197,29 +197,34 @@ class Scan extends Component {
     };
 
     if(this.props.isLoggedIn) {
-      return (
-        <div style={{padding: "30px"}}>
-          <Condition
-            onChange={this.onChange}
-            state={this.state}
-            heroStyles={heroStyles}
-          />
-          <FoodAndMedicine
-            onChange={this.onChange}
-            state={this.state}
-          />
-          <FinalCheck
-            state={this.state}
-          />
-          <Row>
-            <Col md={{ size: 8, offset: 2 }}>
-            {this.previousButton()}
-            {this.nextButton()}
-            </Col>
-          </Row>
-          {this.submitButton()}
-        </div>
-      );
+      if(this.props.requestSent) {
+        return <Redirect to="/requiremaps" />
+      }
+      else {
+        return (
+          <div style={{padding: "30px"}}>
+            <Condition
+              onChange={this.onChange}
+              state={this.state}
+              heroStyles={heroStyles}
+            />
+            <FoodAndMedicine
+              onChange={this.onChange}
+              state={this.state}
+            />
+            <FinalCheck
+              state={this.state}
+            />
+            <Row>
+              <Col md={{ size: 8, offset: 2 }}>
+              {this.previousButton()}
+              {this.nextButton()}
+              </Col>
+            </Row>
+            {this.submitButton()}
+          </div>
+        );
+      }
     }
     else {
       return <Redirect to="/login" />

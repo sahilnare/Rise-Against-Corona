@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Col, Row } from 'reactstrap';
 import { Redirect } from "react-router-dom";
 import { withFirebaseHOC } from '../../../firebase'
+import { Button } from 'reactstrap';
 // import { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer } from "react-google-maps";
 import MapContainer from './MapContainer'
 const url = "https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCUSWjSKUXyiqrNOFPoZg-HKUH3AyMZrXs&callback=initMap"
@@ -55,6 +56,22 @@ class Map extends Component {
               />
             </Col>
           </Row>
+          {
+            this.props.currentAction === "receive" ? (
+              <Row>
+                <Col md={{ size: 8, offset: 2 }}>
+                  <Button
+                    color="success"
+                    onClick={this.props.sendRequest}
+                    className="center"
+                    size="lg"
+                  >
+                  Confirm
+                  </Button>
+                </Col>
+              </Row>
+            ) : null
+          }
         </React.Fragment>
       );
     }

@@ -24,7 +24,8 @@ class DashboardLayout extends Component {
       loading: true,
       isVerified: true,
       isRecorded: false,
-      reqData: ""
+      reqData: "",
+      requestSent: false
     };
   }
 
@@ -58,6 +59,7 @@ class DashboardLayout extends Component {
     this.props.firebase.checkUserAuth(user => {
         if(user) {
           console.log("User has logged in: ", user.email)
+          // console.log(user)
           // console.log("Email Verification: ", user.emailVerified)
           this.setState({isLoggedIn: true, loading: false})
           if(user.emailVerified) {
@@ -98,6 +100,10 @@ class DashboardLayout extends Component {
 
   handleRecord = (reqData) => {
     this.setState({isRecorded: true, reqData: reqData});
+  }
+
+  parentSendRequest = () => {
+    this.setState({requestSent: true})
   }
 
   render() {
@@ -160,7 +166,7 @@ class DashboardLayout extends Component {
                 <Switch>
                   {routes.map((page, key) => {
                         return (
-                          <Route path={page.path} render={(props) => <page.component isLoggedIn={this.state.isLoggedIn} isRecorded={this.state.isRecorded} handleRecord={this.handleRecord} reqData={this.state.reqData} isVerified={this.state.isVerified} {...props} />} key={key} />
+                          <Route path={page.path} render={(props) => <page.component requestSent={this.state.requestSent} parentSendRequest={this.parentSendRequest} isLoggedIn={this.state.isLoggedIn} isRecorded={this.state.isRecorded} handleRecord={this.handleRecord} reqData={this.state.reqData} isVerified={this.state.isVerified} {...props} />} key={key} />
                         )
                   })}
                   <Redirect from="/" to="/home" />
