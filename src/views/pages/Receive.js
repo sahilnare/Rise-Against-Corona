@@ -289,9 +289,9 @@ function FoodAndMedicine(props) {
         <Row>
           <Col md={6}>
             <div className="home-hero">
-              <h1>Enter the distance and the amount of time for which you require the bike!</h1>
+              <h1>Enter the food and the medicine that you need</h1>
               <p className="text-muted">
-                The length and time can be approximate.
+                Please write with details
               </p>
             </div>
           </Col>

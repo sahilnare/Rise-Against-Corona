@@ -86,7 +86,7 @@ class Login extends Component {
       // document.getElementById("loading").style.display = "block"
       this.props.firebase.loginWithEmail(this.state.email, this.state.password)
         .then(cred => {
-          console.log(cred.user)
+          // console.log(cred.user)
           this.setState({
             email: "",
             password: "",

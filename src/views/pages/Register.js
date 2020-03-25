@@ -106,7 +106,7 @@ class Register extends Component {
       // document.getElementById("loading").style.display = "block"
       this.props.firebase.signupWithEmail(this.state.email, this.state.password)
         .then(cred => {
-          console.log(cred.user)
+          // console.log(cred.user)
           cred.user.sendEmailVerification().then(function() {
           }).catch(err => console.log(err));
           this.props.firebase.addUser({id: cred.user.uid, name: this.state.name, email: this.state.email})
