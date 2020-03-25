@@ -64,6 +64,9 @@ class DashboardLayout extends Component {
           // console.log(user)
           // console.log("Email Verification: ", user.emailVerified)
           this.setState({isLoggedIn: true, loading: false, userId: user.uid})
+          this.props.firebase.getUserFromId(user.uid).then(user => {
+            this.setState({requestSent: user.data().requestSent, isRecorded: user.data().requestSent});
+          })
           if(user.emailVerified) {
             this.setState({isVerified: true})
           }
@@ -93,7 +96,7 @@ class DashboardLayout extends Component {
 
   logOut = (e) => {
     e.preventDefault()
-    this.setState({isLoggedIn: false});
+    this.setState({isLoggedIn: false, requestSent: false, isRecorded: false});
     this.props.firebase.signOut().then(() => {
       console.log("User has logged out");
       // this.setState({isLoggedIn: false});

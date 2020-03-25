@@ -24,7 +24,6 @@ import ErrorPage from './pages/404';
 import Register from './pages/Register'
 import Users from './pages/Users'
 import Login from './pages/Login'
-import Scan from './pages/Scan'
 // import Maps from './pages/maps/Maps'
 import ReceiveMaps from './pages/maps/ReceiveMaps'
 import Receive from './pages/Receive'
@@ -47,11 +46,6 @@ const pageList = [
     path: '/login',
     component: Login,
     isLoggedOut: true
-  },
-  {
-    name: 'Scan',
-    path: '/scan',
-    component: Scan,
   },
   // {
   //   name: 'Maps',

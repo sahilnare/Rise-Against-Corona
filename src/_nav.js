@@ -6,11 +6,6 @@ export default {
       icon: 'Home',
     },
     {
-      name: 'Scan',
-      url: '/scan',
-      icon: 'Camera',
-    },
-    {
       name: 'Register',
       url: '/register',
       icon: 'UserPlus',
