@@ -34,16 +34,18 @@ const Firebase = {
         requestSent: true
       }, {merge: true})
   },
-  addRequestData: (userId, name, food, medicine) => {
+  addRequestData: (directions) => {
     return firebase
       .firestore()
       .collection('requests')
       .doc(userId)
       .set({
-        userId: userId,
-        name: name,
-        food: food,
-        medicine: medicine,
+        // userId: userId,
+        // name: name,
+        // food: food,
+        // medicine: medicine,
+        // condition: condition
+        directions: new firebase.firestore.GeoPoint(directions.lat, directions.lon)
       })
   },
   addUser: user => {

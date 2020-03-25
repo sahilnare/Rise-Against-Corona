@@ -26,7 +26,8 @@ class DashboardLayout extends Component {
       isRecorded: false,
       reqData: "",
       requestSent: false,
-      userId: ""
+      userId: "",
+      userName: ""
     };
   }
 
@@ -65,7 +66,10 @@ class DashboardLayout extends Component {
           // console.log("Email Verification: ", user.emailVerified)
           this.setState({isLoggedIn: true, loading: false, userId: user.uid})
           this.props.firebase.getUserFromId(user.uid).then(user => {
-            this.setState({requestSent: user.data().requestSent, isRecorded: user.data().requestSent});
+            if(user.data().requestSent)
+            this.setState({requestSent: true, isRecorded: true, userName: user.data().name});
+            else
+            this.setState({requestSent: false, isRecorded: false, userName: user.data().name});
           })
           if(user.emailVerified) {
             this.setState({isVerified: true})
