@@ -139,14 +139,14 @@ class DashboardLayout extends Component {
                 {this.state.isLoggedIn ? (
                   <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav caret>
-                      <Avatar size="small" color="blue" initials="JS" />
+                      <Avatar size="small" color="success" initials="JS" />
                     </DropdownToggle>
                     <DropdownMenu right>
                       <DropdownItem><Link to="/home">Home</Link></DropdownItem>
                       <DropdownItem>User</DropdownItem>
                       <DropdownItem divider />
                       <DropdownItem>
-                        Message <Badge color="primary">10</Badge>
+                        Message <Badge color="success">10</Badge>
                       </DropdownItem>
                       <DropdownItem divider />
                       <DropdownItem onClick={this.logOut}>
@@ -180,11 +180,11 @@ class DashboardLayout extends Component {
               </span>
             </span>
           </Footer>
-          <Chat.Container>
+          {/*<Chat.Container>
             {this.state.showChat1 && (
               <Chat.ChatBox name="Messages" status="online" image={avatar1} close={this.closeChat} />
             )}
-          </Chat.Container>
+          </Chat.Container>*/}
         </div>
       </ContextProviders>
     );
