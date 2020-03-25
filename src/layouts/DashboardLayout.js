@@ -70,7 +70,7 @@ class DashboardLayout extends Component {
             this.setState({requestSent: true, isRecorded: true, userName: user.data().name});
             else
             this.setState({requestSent: false, isRecorded: false, userName: user.data().name});
-          })
+          }).catch(err => console.log(err))
           if(user.emailVerified) {
             this.setState({isVerified: true})
           }
@@ -175,7 +175,7 @@ class DashboardLayout extends Component {
                 <Switch>
                   {routes.map((page, key) => {
                         return (
-                          <Route path={page.path} render={(props) => <page.component userId={this.state.userId} requestSent={this.state.requestSent} parentSendRequest={this.parentSendRequest} isLoggedIn={this.state.isLoggedIn} isRecorded={this.state.isRecorded} handleRecord={this.handleRecord} reqData={this.state.reqData} isVerified={this.state.isVerified} {...props} />} key={key} />
+                          <Route path={page.path} render={(props) => <page.component userName={this.state.userName} userId={this.state.userId} requestSent={this.state.requestSent} parentSendRequest={this.parentSendRequest} isLoggedIn={this.state.isLoggedIn} isRecorded={this.state.isRecorded} handleRecord={this.handleRecord} reqData={this.state.reqData} isVerified={this.state.isVerified} {...props} />} key={key} />
                         )
                   })}
                   <Redirect from="/" to="/home" />

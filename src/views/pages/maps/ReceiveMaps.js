@@ -15,7 +15,7 @@ class ReceiveMaps extends Component {
 
   sendRequest = (directions) => {
     //send request
-    this.props.firebase.addRequestData(directions)
+    this.props.firebase.addRequestData(this.props.userId, this.props.userName, this.props.reqData.food, this.props.reqData.medicine, this.props.reqData.condition, directions)
       .then(data => {
         this.props.firebase.sendRequest(this.props.userId)
         this.props.parentSendRequest()
