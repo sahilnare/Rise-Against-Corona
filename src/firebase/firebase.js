@@ -39,7 +39,7 @@ const Firebase = {
       .firestore()
       .collection('users')
       .doc(user.id)
-      .add({
+      .set({
         id: user.id,
         name: user.name,
         email: user.email,
@@ -51,12 +51,13 @@ const Firebase = {
       .collection('users')
       .get()
   },
-  addMapPoint: point => {
+  addMapPoint: (userId, point) => {
     return firebase
       .firestore()
       .collection('map-data')
       .add({
-        latlong: new firebase.firestore.GeoPoint(point.lat, point.lng)
+        userId: userId,
+        latlong: new firebase.firestore.GeoPoint(point.lat, point.lon)
       })
   },
   db: () => {

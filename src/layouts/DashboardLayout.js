@@ -61,7 +61,7 @@ class DashboardLayout extends Component {
           console.log("User has logged in: ", user.email)
           // console.log(user)
           // console.log("Email Verification: ", user.emailVerified)
-          this.setState({isLoggedIn: true, loading: false})
+          this.setState({isLoggedIn: true, loading: false, userId: user.uid})
           if(user.emailVerified) {
             this.setState({isVerified: true})
           }
