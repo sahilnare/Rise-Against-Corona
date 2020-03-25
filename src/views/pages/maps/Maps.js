@@ -12,12 +12,12 @@ class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      directions: {
-        latlong: {
+      directions: [
+        {
           lat: 19.07283,
           lon: 72.88261
         }
-      }
+      ]
     };
   }
 
@@ -29,8 +29,8 @@ class Map extends Component {
         console.log(position.coords.latitude, position.coords.longitude);
         this.setState(prevState => {
           let directions = { ...prevState.directions };
-          directions.latlong.lat = position.coords.latitude
-          directions.latlong.lon = position.coords.longitude
+          directions[0].lat = position.coords.latitude
+          directions[0].lon = position.coords.longitude
           return { directions };
         })
       }, () => {
@@ -62,7 +62,7 @@ class Map extends Component {
                 <Col md={{ size: 8, offset: 2 }}>
                   <Button
                     color="success"
-                    onClick={() => this.props.sendRequest(this.state.directions.latlong)}
+                    onClick={() => this.props.sendRequest(this.state.directions[0])}
                     className="center"
                     size="lg"
                   >

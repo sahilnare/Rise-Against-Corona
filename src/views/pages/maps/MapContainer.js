@@ -5,17 +5,17 @@ import { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer } from "reac
 import Marker from "./Marker";
 
 const MapContainer = withScriptjs(withGoogleMap((props) => {
-    const marker = (<Marker
-                      position={{ lat: props.directions.latlong.lat, lng: props.directions.latlong.lon }}
+    const markers = props.directions.map(dir => <Marker
+                      position={{ lat: dir.lat, lng: dir.lon }}
                     />)
 
       return (
               <GoogleMap
                 defaultZoom={14}
-                center={ { lat: props.directions.latlong.lat, lng: props.directions.latlong.lon } }
+                center={ { lat: props.directions[0].lat, lng: props.directions[0].lon } }
                 >
                 {props.directions && <DirectionsRenderer directions={props.directions} />}
-                {marker}
+                {markers}
               </GoogleMap>
       );
   }
