@@ -32,13 +32,29 @@ class Map extends Component {
           directions[0].lat = position.coords.latitude
           directions[0].lon = position.coords.longitude
           return { directions };
-        })
+        }, this.getRequests())
+
       }, () => {
         console.log('Unable to get location');
       });
     }
-
+    console.log(this.props.mapPoints);
   }
+
+  getRequests = () => {
+    if(this.props.currentAction === "donate") {
+      this.props.mapPoints.forEach((item) => {
+        console.log(item.directions)
+        this.setState(state => ({
+          directions: [...state.directions, {lat: item.directions.F, lon: item.directions.V}]
+        }))
+      });
+    }
+  }
+
+  // componentDidUpdate() {
+  //   console.log(this.state.directions);
+  // }
 
   render() {
 
@@ -58,7 +74,7 @@ class Map extends Component {
           </Row>
           {
             this.props.currentAction === "receive" ? (
-              <Row>
+              <Row style={{marginTop: "30px"}}>
                 <Col md={{ size: 8, offset: 2 }}>
                   <Button
                     color="success"

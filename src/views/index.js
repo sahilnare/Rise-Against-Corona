@@ -27,6 +27,7 @@ import Login from './pages/Login'
 // import Maps from './pages/maps/Maps'
 import ReceiveMaps from './pages/maps/ReceiveMaps'
 import Receive from './pages/Receive'
+import Donate from './pages/Donate'
 
 // See React Router documentation for details: https://reacttraining.com/react-router/web/api/Route
 const pageList = [
@@ -56,6 +57,11 @@ const pageList = [
     name: 'Receive',
     path: '/receive',
     component: Receive,
+  },
+  {
+    name: 'Donate',
+    path: '/donate',
+    component: Donate,
   },
   {
     name: 'ReceiveMaps',

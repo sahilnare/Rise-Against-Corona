@@ -23,6 +23,11 @@ export default {
       icon: 'Coffee',
     },
     {
+      name: 'Donate',
+      url: '/donate',
+      icon: 'Camera',
+    },
+    {
       name: 'Users',
       url: '/users',
       icon: 'Coffee',

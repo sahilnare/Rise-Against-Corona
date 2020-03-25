@@ -51,7 +51,7 @@ class DashboardLayout extends Component {
     //       console.log("User has logged out")
     //     }
     // })
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   componentDidMount() {

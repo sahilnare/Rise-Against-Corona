@@ -250,30 +250,34 @@ function Condition(props) {
         </Row>
         <Row>
           <Col md={{ size: 8, offset: 2 }}>
-            <Form>
-              <FormGroup check>
-                <Label check>
-                  <Input type="radio" name="condition" id="imp" onChange={props.onChange} value="imp" valid={props.state.success.condition === "c"} invalid={props.state.success.condition === "w"} />{' '}
-                  Important
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="radio" name="condition" id="vimp" onChange={props.onChange} value="vimp" valid={props.state.success.condition === "c"} invalid={props.state.success.condition === "w"} />{' '}
-                  Very Important
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="radio" name="condition" id="emrg" onChange={props.onChange} value="emrg" valid={props.state.success.condition === "c"} invalid={props.state.success.condition === "w"} />{' '}
-                  Emergency
-                </Label>
-              </FormGroup>
-              {/*<Button color="success" onClick={props.idSubmit}><i className="fa fa-check"></i>Submit</Button>*/}
-              {props.state.conSub ? props.state.conValid ? null : <Alert style={{"marginTop": "15px"}} color="danger">
-                Bike Id is invalid!
-              </Alert> : null}
-            </Form>
+            <Card>
+              <CardBody>
+                <Form>
+                  <FormGroup check>
+                    <Label check>
+                      <Input type="radio" checked={props.state.condition === "imp"} name="condition" id="imp" onChange={props.onChange} value="imp" valid={props.state.success.condition === "c"} invalid={props.state.success.condition === "w"} />{' '}
+                      <h3>Important</h3>
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label check>
+                      <Input type="radio" checked={props.state.condition === "vimp"} name="condition" id="vimp" onChange={props.onChange} value="vimp" valid={props.state.success.condition === "c"} invalid={props.state.success.condition === "w"} />{' '}
+                      <h3>Very Important</h3>
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label check>
+                      <Input type="radio" checked={props.state.condition === "emrg"} name="condition" id="emrg" onChange={props.onChange} value="emrg" valid={props.state.success.condition === "c"} invalid={props.state.success.condition === "w"} />{' '}
+                      <h3>Emergency</h3>
+                    </Label>
+                  </FormGroup>
+                  {/*<Button color="success" onClick={props.idSubmit}><i className="fa fa-check"></i>Submit</Button>*/}
+                  {props.state.conSub ? props.state.conValid ? null : <Alert style={{"marginTop": "15px"}} color="danger">
+                    Bike Id is invalid!
+                  </Alert> : null}
+                </Form>
+              </CardBody>
+            </Card>
           </Col>
         </Row>
     </React.Fragment>
@@ -301,12 +305,12 @@ function FoodAndMedicine(props) {
             <Form>
               <FormGroup>
                 <Label for="food"></Label>
-                <Input valid={props.state.success.food === "c"} invalid={props.state.success.food === "w"} type="text" name="food" id="food" placeholder="Food required" onChange={props.onChange} value={props.state.food} autoComplete="off"/>
+                <Input valid={props.state.success.food === "c"} invalid={props.state.success.food === "w"} type="textarea" name="food" id="food" placeholder="Food required" onChange={props.onChange} value={props.state.food} autoComplete="off"/>
                 <FormFeedback invalid>This cannot be empty</FormFeedback>
               </FormGroup>
               <FormGroup>
                 <Label for="medicine"></Label>
-                <Input valid={props.state.success.medicine === "c"} invalid={props.state.success.medicine === "w"} type="text" name="medicine" id="medicine" placeholder="Medicine required" onChange={props.onChange} value={props.state.medicine} autoComplete="off"/>
+                <Input valid={props.state.success.medicine === "c"} invalid={props.state.success.medicine === "w"} type="textarea" name="medicine" id="medicine" placeholder="Medicine required" onChange={props.onChange} value={props.state.medicine} autoComplete="off"/>
                 <FormFeedback invalid>This cannot be empty</FormFeedback>
               </FormGroup>
               {props.state.foodSub ? props.state.foodValid ? null : <Alert style={{"marginTop": "15px"}} color="danger">
@@ -361,7 +365,7 @@ function FinalCheck(props) {
               <Card className="text-center">
                 <CardHeader tag="h3"><h2>Requirement</h2></CardHeader>
                 <CardBody>
-                  <h1>{props.state.condition}</h1>
+                  <h1>{props.state.condition === "imp" ? "Important" : props.state.condition === "vimp" ? "Very Important" : props.state.condition === "emrg" ? "Emergency" : null}</h1>
                 </CardBody>
               </Card>
             </Col>

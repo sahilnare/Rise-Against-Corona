@@ -85,7 +85,7 @@ const Firebase = {
   getMapPoints: () => {
     return firebase
       .firestore()
-      .collection('map-data')
+      .collection('requests')
       .get()
   },
   db: () => {
