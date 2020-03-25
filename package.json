@@ -3,7 +3,6 @@
   "version": "1.0.2",
   "description": "Vibe Dashboard React Theme",
   "author": "Nice Dash",
-  "homepage": "http://setsatsvnit.github.io/electric_vibe",
   "copyright": "Copyright 2019 Nice Dash",
   "private": true,
   "dependencies": {
@@ -28,8 +27,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
