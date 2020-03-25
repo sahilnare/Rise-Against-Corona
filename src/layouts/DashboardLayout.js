@@ -25,7 +25,8 @@ class DashboardLayout extends Component {
       isVerified: true,
       isRecorded: false,
       reqData: "",
-      requestSent: false
+      requestSent: false,
+      userId: ""
     };
   }
 
@@ -49,6 +50,7 @@ class DashboardLayout extends Component {
     //       console.log("User has logged out")
     //     }
     // })
+    console.log(this.state);
   }
 
   componentDidMount() {
@@ -166,7 +168,7 @@ class DashboardLayout extends Component {
                 <Switch>
                   {routes.map((page, key) => {
                         return (
-                          <Route path={page.path} render={(props) => <page.component requestSent={this.state.requestSent} parentSendRequest={this.parentSendRequest} isLoggedIn={this.state.isLoggedIn} isRecorded={this.state.isRecorded} handleRecord={this.handleRecord} reqData={this.state.reqData} isVerified={this.state.isVerified} {...props} />} key={key} />
+                          <Route path={page.path} render={(props) => <page.component userId={this.state.userId} requestSent={this.state.requestSent} parentSendRequest={this.parentSendRequest} isLoggedIn={this.state.isLoggedIn} isRecorded={this.state.isRecorded} handleRecord={this.handleRecord} reqData={this.state.reqData} isVerified={this.state.isVerified} {...props} />} key={key} />
                         )
                   })}
                   <Redirect from="/" to="/home" />

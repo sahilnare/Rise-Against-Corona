@@ -15,9 +15,10 @@ class ReceiveMaps extends Component {
 
   sendRequest = (directions) => {
     //send request
-    this.props.firebase.sendRequest(this.props.userId)
-    this.props.firebase.addMapPoint(this.props.userId, directions)
-    this.props.parentSendRequest()
+    this.props.firebase.addMapPoint(this.props.userId, directions).then(data => {
+      this.props.firebase.sendRequest(this.props.userId)
+      this.props.parentSendRequest()
+    })
   }
 
   render() {

@@ -62,7 +62,7 @@ class Map extends Component {
                 <Col md={{ size: 8, offset: 2 }}>
                   <Button
                     color="success"
-                    onClick={() => this.props.sendRequest()}
+                    onClick={() => this.props.sendRequest(this.state.directions.latlong)}
                     className="center"
                     size="lg"
                   >

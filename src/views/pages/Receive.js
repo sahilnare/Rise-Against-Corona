@@ -198,7 +198,7 @@ class Scan extends Component {
 
     if(this.props.isLoggedIn) {
       if(this.props.requestSent) {
-        return <Redirect to="/requiremaps" />
+        return <Redirect to="/receivemaps" />
       }
       else {
         return (
