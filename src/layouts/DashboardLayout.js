@@ -23,8 +23,8 @@ class DashboardLayout extends Component {
       isLoggedIn: false,
       loading: true,
       isVerified: true,
-      isScanned: false,
-      bikeData: ""
+      isRecorded: false,
+      reqData: ""
     };
   }
 
@@ -96,8 +96,8 @@ class DashboardLayout extends Component {
     }).catch(err => console.log(err))
   }
 
-  handleScan = (bikeData) => {
-    this.setState({isScanned: true, bikeData: bikeData});
+  handleRecord = (reqData) => {
+    this.setState({isRecorded: true, reqData: reqData});
   }
 
   render() {
@@ -160,7 +160,7 @@ class DashboardLayout extends Component {
                 <Switch>
                   {routes.map((page, key) => {
                         return (
-                          <Route path={page.path} render={(props) => <page.component isLoggedIn={this.state.isLoggedIn} isScanned={this.state.isScanned} handleScan={this.handleScan} bikeData={this.state.bikeData} isVerified={this.state.isVerified} {...props} />} key={key} />
+                          <Route path={page.path} render={(props) => <page.component isLoggedIn={this.state.isLoggedIn} isRecorded={this.state.isRecorded} handleRecord={this.handleRecord} reqData={this.state.reqData} isVerified={this.state.isVerified} {...props} />} key={key} />
                         )
                   })}
                   <Redirect from="/" to="/home" />

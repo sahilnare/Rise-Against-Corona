@@ -42,27 +42,21 @@ class Map extends Component {
   render() {
 
     if(this.props.isLoggedIn) {
-      if(this.props.isScanned) {
-        return (
-          <div>
-            <Row>
-              <Col md={{ size: 8, offset: 2 }}>
-                <h1>{this.props.bikeData.bikeId}</h1>
-                <MapContainer
-                  directions={this.state.directions}
-                  googleMapURL={url}
-                  loadingElement={<div style={{ height: `100%` }} />}
-                  containerElement={<div style={{ height: `600px`, width: `100%` }} />}
-                  mapElement={<div style={{ height: `100%` }} />}
-                />
-              </Col>
-            </Row>
-          </div>
-        );
-      }
-      else {
-        return <Redirect to="/scan" />
-      }
+      return (
+        <React.Fragment>
+          <Row>
+            <Col md={{ size: 8, offset: 2 }}>
+              <MapContainer
+                directions={this.state.directions}
+                googleMapURL={url}
+                loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={<div style={{ height: `600px`, width: `100%` }} />}
+                mapElement={<div style={{ height: `100%` }} />}
+              />
+            </Col>
+          </Row>
+        </React.Fragment>
+      );
     }
     else {
       return <Redirect to="/login" />

@@ -23,6 +23,11 @@ export default {
       isLoggedOut: true,
     },
     {
+      name: 'Receive',
+      url: '/receive',
+      icon: 'Coffee',
+    },
+    {
       name: 'Users',
       url: '/users',
       icon: 'Coffee',

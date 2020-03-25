@@ -25,7 +25,9 @@ import Register from './pages/Register'
 import Users from './pages/Users'
 import Login from './pages/Login'
 import Scan from './pages/Scan'
-import Maps from './pages/maps/Maps'
+// import Maps from './pages/maps/Maps'
+import ReceiveMaps from './pages/maps/ReceiveMaps'
+import Receive from './pages/Receive'
 
 // See React Router documentation for details: https://reacttraining.com/react-router/web/api/Route
 const pageList = [
@@ -51,10 +53,20 @@ const pageList = [
     path: '/scan',
     component: Scan,
   },
+  // {
+  //   name: 'Maps',
+  //   path: '/maps',
+  //   component: Maps,
+  // },
   {
-    name: 'Maps',
-    path: '/maps',
-    component: Maps,
+    name: 'Receive',
+    path: '/receive',
+    component: Receive,
+  },
+  {
+    name: 'ReceiveMaps',
+    path: '/receivemaps',
+    component: ReceiveMaps,
   },
   {
     name: 'Users',
