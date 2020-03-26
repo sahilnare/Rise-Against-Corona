@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, Link } from 'react-router-dom';
-import { Button, Badge, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Button, Badge, NavItem, UncontrolledDropdown, UncontrolledAlert, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Header, SidebarNav, Footer, PageContent, Avatar, Chat, PageAlert, Page } from '../vibe';
 import Logo from '../assets/images/vibe-logo.svg';
 import avatar1 from '../assets/images/avatar1.png';
@@ -70,6 +70,8 @@ class DashboardLayout extends Component {
             this.setState({requestSent: true, isRecorded: true, userName: user.data().name});
             else
             this.setState({requestSent: false, isRecorded: false, userName: user.data().name});
+            if(user.data().donorAdded)
+            this.setState({donorAdded: true});
           }).catch(err => console.log(err))
           if(user.emailVerified) {
             this.setState({isVerified: true})
@@ -126,6 +128,11 @@ class DashboardLayout extends Component {
       <ContextProviders>
         <div className={`app ${sidebarCollapsedClass}`}>
           <PageAlert />
+          {
+            this.state.donorAdded ? (<UncontrolledAlert color="warning">
+              Donor found! Check notifications!
+            </UncontrolledAlert>) : null
+          }
           <div className="app-body">
             <SidebarNav
               nav={nav}

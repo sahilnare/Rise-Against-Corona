@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build"
+    "predeploy": "npm audit fix && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'reactstrap';
 import { Redirect } from "react-router-dom";
-import { withFirebaseHOC } from '../../../firebase'
+// import { withFirebaseHOC } from '../../../firebase'
 import { Button } from 'reactstrap';
 // import { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer } from "react-google-maps";
 import MapContainer from './MapContainer'
@@ -23,11 +23,16 @@ class Map extends Component {
   }
 
   onToggleOpen = (i) => {
-    this.setState(prevState => {
-      let directions = { ...prevState.directions };
-      directions[i].isOpen = !directions.isOpen
-      return { directions };
-    })
+    if(this.props.currentAction === "donate") {
+      console.log("open close");
+      this.setState(prevState => {
+        let directions = { ...prevState.directions };
+        let item = {...directions[i]}
+        item.isOpen = !item.isOpen
+        directions[i] = item
+        return { directions };
+      })
+    }
   }
 
   componentDidMount() {
@@ -55,9 +60,9 @@ class Map extends Component {
   getRequests = () => {
     if(this.props.currentAction === "donate") {
       this.props.mapPoints.forEach((item) => {
-        console.log(item.directions)
+        // console.log(item.directions)
         this.setState(state => ({
-          directions: [...state.directions, {lat: item.directions.F, lon: item.directions.V, isOpen: false}]
+          directions: [...state.directions, {lat: item.directions.F, lon: item.directions.V, food: item.food, medicine: item.medicine, condition: item.condition, name: item.name, userId: item.userId, isOpen: false}]
         }))
       });
     }
@@ -76,10 +81,15 @@ class Map extends Component {
             <Col md={{ size: 8, offset: 2 }}>
               <MapContainer
                 directions={this.state.directions}
+                onToggleOpen={this.onToggleOpen}
+                currentAction={this.props.currentAction}
                 googleMapURL={url}
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `600px`, width: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
+                firebase={this.props.firebase}
+                userId={this.props.userId}
+                userName={this.props.userName}
               />
             </Col>
           </Row>

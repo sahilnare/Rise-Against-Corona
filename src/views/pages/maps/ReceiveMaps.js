@@ -15,7 +15,7 @@ class ReceiveMaps extends Component {
 
   sendRequest = (directions) => {
     //send request
-    this.props.firebase.addRequestData(this.props.userId, this.props.userName, this.props.reqData.food, this.props.reqData.medicine, this.props.reqData.condition, directions)
+    this.props.firebase.addRequestData(this.props.userId, this.props.userName, this.props.reqData.number, this.props.reqData.food, this.props.reqData.medicine, this.props.reqData.condition, directions)
       .then(data => {
         this.props.firebase.sendRequest(this.props.userId)
         this.props.parentSendRequest()
@@ -50,12 +50,13 @@ class ReceiveMaps extends Component {
           return (
             <div>
               <Row>
-                <Col md={{ size: 8, offset: 2 }}>
+                <Col md={{ size: 8, offset: 2 }} style={{marginBottom: "20px"}}>
                   <h3>Food required: {this.props.reqData.food}</h3>
                   <h3>Medicine required: {this.props.reqData.medicine}</h3>
+                  <h3>Phone number: {this.props.reqData.number}</h3>
                 </Col>
               </Row>
-              <Maps isLoggedIn={this.props.isLoggedIn} currentAction="receive" sendRequest={this.sendRequest} />
+              <Maps isLoggedIn={this.props.isLoggedIn} firebase={this.props.firebase} userId={this.props.userId} userName={this.props.userName} currentAction="receive" sendRequest={this.sendRequest} />
             </div>
           );
         }

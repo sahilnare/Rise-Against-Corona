@@ -12,12 +12,14 @@ class Scan extends Component {
       condition: "",
       food: "",
       medicine: "",
+      number: "",
       success: {
 
       },
       conValid: false,
       foodValid: false,
       medValid: false,
+      numValid: false
     };
   }
 
@@ -84,6 +86,24 @@ class Scan extends Component {
               }
             }
 
+          case "number":
+            {
+              if(value.match(/^[0-9]{10}$/)) {
+                this.setState(prevState => {
+                  let success = { ...prevState.success };
+                  success[name] = "c";
+                  return { success };
+                })
+              }
+              else {
+                this.setState(prevState => {
+                  let success = { ...prevState.success };
+                  success[name] = "w";
+                  return { success };
+                })
+              }
+            }
+
           default:
             break
       }
@@ -109,8 +129,8 @@ class Scan extends Component {
       }
     }
     else if(this.state.currentStep === 2) {
-      if(this.state.success.food === "c" && this.state.success.medicine === "c") {
-        this.setState({foodValid: true, foodSub: true, medValid: true, medSub: true})
+      if(this.state.success.food === "c" && this.state.success.medicine === "c" && this.state.success.number === "c") {
+        this.setState({foodValid: true, foodSub: true, medValid: true, medSub: true, numValid: true, numSub: true})
         let currentStep = this.state.currentStep
         currentStep = currentStep >= 2? 3: currentStep + 1
         this.setState({
@@ -119,11 +139,12 @@ class Scan extends Component {
         this.props.handleRecord({
           condition: this.state.condition,
           food: this.state.food,
-          medicine: this.state.medicine
+          medicine: this.state.medicine,
+          number: this.state.number
         })
       }
       else {
-        this.setState({foodValid: false, foodSub: true, medValid: false, medSub: true})
+        this.setState({foodValid: false, foodSub: true, medValid: false, medSub: true, numValid: false, numSub: true})
       }
     }
     else {
@@ -303,6 +324,11 @@ function FoodAndMedicine(props) {
         <Row>
           <Col md={{ size: 8, offset: 2 }}>
             <Form>
+            <FormGroup>
+              <Label for="number"></Label>
+              <Input valid={props.state.success.number === "c"} invalid={props.state.success.number === "w"} type="textarea" name="number" id="number" placeholder="Your phone number" onChange={props.onChange} value={props.state.number} autoComplete="off"/>
+              <FormFeedback invalid>Enter your number</FormFeedback>
+            </FormGroup>
               <FormGroup>
                 <Label for="food"></Label>
                 <Input valid={props.state.success.food === "c"} invalid={props.state.success.food === "w"} type="textarea" name="food" id="food" placeholder="Food required" onChange={props.onChange} value={props.state.food} autoComplete="off"/>
@@ -314,10 +340,10 @@ function FoodAndMedicine(props) {
                 <FormFeedback invalid>This cannot be empty</FormFeedback>
               </FormGroup>
               {props.state.foodSub ? props.state.foodValid ? null : <Alert style={{"marginTop": "15px"}} color="danger">
-                Fill all the fields properly
+                Fill all the fields properly (Type "none" if not needed)
               </Alert> : null}
               {props.state.disSub ? props.state.disValid ? null : <Alert style={{"marginTop": "15px"}} color="danger">
-                Fill all the fields properly
+                Fill all the fields properly (Type "none" if not needed)
               </Alert> : null}
             </Form>
           </Col>

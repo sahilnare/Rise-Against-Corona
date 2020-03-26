@@ -34,7 +34,7 @@ const Firebase = {
         requestSent: true
       }, {merge: true})
   },
-  addRequestData: (userId, name, food, medicine, condition, directions) => {
+  addRequestData: (userId, name, number, food, medicine, condition, directions) => {
     return firebase
       .firestore()
       .collection('requests')
@@ -42,6 +42,7 @@ const Firebase = {
       .set({
         userId: userId,
         name: name,
+        number: number,
         food: food,
         medicine: medicine,
         condition: condition,
@@ -71,6 +72,17 @@ const Firebase = {
       .collection('users')
       .doc(userId)
       .get()
+  },
+  addDonation: (recId, userId, name) => {
+    return firebase
+      .firestore()
+      .collection('donations')
+      .doc(recId)
+      .set({
+        userId: userId,
+        name: name,
+      })
+
   },
   addMapPoint: (userId, point) => {
     return firebase

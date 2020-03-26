@@ -22,6 +22,7 @@ class Donate extends Component {
         this.setState(state => ({
           mapPoints: [...state.mapPoints, {
             name: point.data().name,
+            number: point.data().number,
             directions: point.data().directions,
             food: point.data().food,
             medicine: point.data().medicine,
@@ -56,7 +57,7 @@ class Donate extends Component {
           </Row>
           {
             this.state.ready ? (
-              <Maps isLoggedIn={this.props.isLoggedIn} currentAction="donate" mapPoints={this.state.mapPoints} />
+              <Maps isLoggedIn={this.props.isLoggedIn} firebase={this.props.firebase} userId={this.props.userId} userName={this.props.userName} currentAction="donate" mapPoints={this.state.mapPoints} />
             ) : <Loader id="loading" type="bars" />
           }
         </div>
