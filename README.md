@@ -10,4 +10,4 @@ As there is shortage of many things like masks, medicines and food. Our web appl
 ![Pic2](assets/ss2.png)
 ![Pic3](assets/ss3.png)
 ![Pic4](assets/ss4.png)
-![Pic5](assets/ss5.png)
+![Pic5](assets/ss5.jpg)
