@@ -29,6 +29,7 @@ import ReceiveMaps from './pages/maps/ReceiveMaps'
 import Receive from './pages/Receive'
 import Donate from './pages/Donate'
 import Scan from './pages/Scan'
+import Generate from './pages/Generate'
 
 // See React Router documentation for details: https://reacttraining.com/react-router/web/api/Route
 const pageList = [
@@ -78,6 +79,11 @@ const pageList = [
     name: 'Scan',
     path: '/Scan',
     component: Scan,
+  },
+  {
+    name: 'Generate',
+    path: '/generate',
+    component: Generate,
   }
 
 ];

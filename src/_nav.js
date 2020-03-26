@@ -33,13 +33,18 @@ export default {
       icon: 'Coffee',
     },
     {
-      name: 'Scan',
+      divider: true,
+    },
+    {
+      name: 'Scan QR',
       url: '/scan',
       icon: 'Camera',
     },
     {
-      divider: true,
-    }
+      name: 'Generate QR',
+      url: '/generate',
+      icon: 'UserPlus',
+    },
   ],
   bottom: [
 

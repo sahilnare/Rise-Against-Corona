@@ -11,6 +11,7 @@
     "classnames": "^2.2.6",
     "firebase": "^7.11.0",
     "node-sass": "^4.13.1",
+    "qrcode.react": "^1.0.0",
     "react": "^16.8.1",
     "react-chartjs-2": "2.6.4",
     "react-dom": "^16.8.1",
