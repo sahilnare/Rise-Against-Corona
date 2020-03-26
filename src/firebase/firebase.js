@@ -84,6 +84,18 @@ const Firebase = {
       })
 
   },
+  addScan: (name, time, place) => {
+    return firebase
+      .firestore()
+      .collection('scan')
+      .doc(name)
+      .set({
+        name: name,
+        time: time,
+        place: place
+      })
+
+  },
   addMapPoint: (userId, point) => {
     return firebase
       .firestore()

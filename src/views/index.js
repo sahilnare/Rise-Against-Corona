@@ -28,6 +28,7 @@ import Login from './pages/Login'
 import ReceiveMaps from './pages/maps/ReceiveMaps'
 import Receive from './pages/Receive'
 import Donate from './pages/Donate'
+import Scan from './pages/Scan'
 
 // See React Router documentation for details: https://reacttraining.com/react-router/web/api/Route
 const pageList = [
@@ -72,7 +73,13 @@ const pageList = [
     name: 'Users',
     path: '/users',
     component: Users,
+  },
+  {
+    name: 'Scan',
+    path: '/Scan',
+    component: Scan,
   }
+
 ];
 
 export default pageList;

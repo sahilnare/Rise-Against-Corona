@@ -33,10 +33,15 @@ export default {
       icon: 'Coffee',
     },
     {
+      name: 'Scan',
+      url: '/scan',
+      icon: 'Camera',
+    },
+    {
       divider: true,
     }
   ],
   bottom: [
-    
+
   ],
 };
