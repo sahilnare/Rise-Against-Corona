@@ -23,6 +23,10 @@ class Scan extends Component {
     };
   }
 
+  componentDidUpdate() {
+    console.log(this.state.success.food, this.state.success.number, this.state.success.medicine);
+  }
+
   componentWillUnmount() {
     // this.setState({result: false})
   }
@@ -84,6 +88,7 @@ class Scan extends Component {
                   return { success };
                 })
               }
+              break
             }
 
           case "number":
@@ -129,7 +134,7 @@ class Scan extends Component {
       }
     }
     else if(this.state.currentStep === 2) {
-      if(this.state.success.food === "c" && this.state.success.medicine === "c" && this.state.success.number === "c") {
+      if((this.state.success.food === "c" && this.state.success.medicine === "c") && this.state.success.number === "c") {
         this.setState({foodValid: true, foodSub: true, medValid: true, medSub: true, numValid: true, numSub: true})
         let currentStep = this.state.currentStep
         currentStep = currentStep >= 2? 3: currentStep + 1
@@ -294,7 +299,7 @@ function Condition(props) {
                   </FormGroup>
                   {/*<Button color="success" onClick={props.idSubmit}><i className="fa fa-check"></i>Submit</Button>*/}
                   {props.state.conSub ? props.state.conValid ? null : <Alert style={{"marginTop": "15px"}} color="danger">
-                    Bike Id is invalid!
+                    Select one option!
                   </Alert> : null}
                 </Form>
               </CardBody>
@@ -342,7 +347,10 @@ function FoodAndMedicine(props) {
               {props.state.foodSub ? props.state.foodValid ? null : <Alert style={{"marginTop": "15px"}} color="danger">
                 Fill all the fields properly (Type "none" if not needed)
               </Alert> : null}
-              {props.state.disSub ? props.state.disValid ? null : <Alert style={{"marginTop": "15px"}} color="danger">
+              {props.state.medSub ? props.state.medValid ? null : <Alert style={{"marginTop": "15px"}} color="danger">
+                Fill all the fields properly (Type "none" if not needed)
+              </Alert> : null}
+              {props.state.numSub ? props.state.numValid ? null : <Alert style={{"marginTop": "15px"}} color="danger">
                 Fill all the fields properly (Type "none" if not needed)
               </Alert> : null}
             </Form>
