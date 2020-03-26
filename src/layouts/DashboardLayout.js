@@ -27,7 +27,8 @@ class DashboardLayout extends Component {
       reqData: "",
       requestSent: false,
       userId: "",
-      userName: ""
+      userName: "",
+      handSub: false
     };
   }
 
@@ -109,6 +110,10 @@ class DashboardLayout extends Component {
     }).catch(err => console.log(err))
   }
 
+  handshake = (name, time, place) => {
+    this.props.firebase.handshake(this.state.userName, name, time, place)
+  }
+
   handleRecord = (reqData) => {
     this.setState({isRecorded: true, reqData: reqData});
   }
@@ -186,7 +191,7 @@ class DashboardLayout extends Component {
                 <Switch>
                   {routes.map((page, key) => {
                         return (
-                          <Route path={page.path} render={(props) => <page.component userName={this.state.userName} userId={this.state.userId} requestSent={this.state.requestSent} parentSendRequest={this.parentSendRequest} isLoggedIn={this.state.isLoggedIn} isRecorded={this.state.isRecorded} handleRecord={this.handleRecord} handleScan={this.handleScan} reqData={this.state.reqData} isVerified={this.state.isVerified} {...props} />} key={key} />
+                          <Route path={page.path} render={(props) => <page.component handshake={this.handshake} userName={this.state.userName} userId={this.state.userId} requestSent={this.state.requestSent} parentSendRequest={this.parentSendRequest} isLoggedIn={this.state.isLoggedIn} isRecorded={this.state.isRecorded} handleRecord={this.handleRecord} handleScan={this.handleScan} reqData={this.state.reqData} isVerified={this.state.isVerified} {...props} />} key={key} />
                         )
                   })}
                   <Redirect from="/" to="/home" />

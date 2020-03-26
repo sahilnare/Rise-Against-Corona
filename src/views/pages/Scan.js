@@ -10,9 +10,10 @@ class Scan extends Component {
     this.state = {
       currentStep: 1,
       isScan: true,
-      name: "",
+      bikeId: "",
       distance: "",
       time: "",
+      submitted: false,
       success: {
 
       },
@@ -214,14 +215,26 @@ class Scan extends Component {
   submitButton() {
     let currentStep = this.state.currentStep;
     if(currentStep === 3) {
-      return (
-        <Row>
-          <Link to="/users" style={{margin: "60px auto 20px"}}>
-          Submit
-          </Link>
-        </Row>
-      )
+        return (
+          <Row>
+            <Col md={{size: 6, offset: 3}}>
+            <Button
+              color="primary"
+              onClick={this.onSubmit()}
+              className="center"
+              size="lg"
+            >
+            Submit
+            </Button>
+            </Col>
+          </Row>
+        )
     }
+  }
+
+  onSubmit = () => {
+    this.props.handshake(this.state.bikeId, this.state.time, this.state.distance)
+    // this.setState({submitted: true})
   }
 
   render() {

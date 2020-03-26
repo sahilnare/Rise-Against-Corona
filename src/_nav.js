@@ -28,7 +28,7 @@ export default {
       icon: 'Camera',
     },
     {
-      name: 'Users',
+      name: 'Handshakes',
       url: '/users',
       icon: 'Coffee',
     },

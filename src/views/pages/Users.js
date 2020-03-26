@@ -16,10 +16,10 @@ class Users extends Component {
   }
 
   componentDidMount() {
-    this.props.firebase.getUsers().then((snap) => {
+    this.props.firebase.getHandshake().then((snap) => {
       snap.docs.forEach((doc, i) => {
         this.setState(state => ({
-          users: [...state.users, {name: doc.data().name, email: doc.data().email}]
+          users: [...state.users, {user1: doc.data().user1, user2: doc.data().user2, time: doc.data().time, place: doc.data().place }]
         }))
       })
     })
@@ -34,9 +34,10 @@ class Users extends Component {
     this.state.users.forEach((user, i) => {
       userTable.push((
         <tr>
-            <td>{i+1}</td>
-            <td>{user.name}</td>
-            <td>{user.email}</td>
+            <td>{user.user1}</td>
+            <td>{user.user2}</td>
+            <td>{user.time}</td>
+            <td>{user.place}</td>
         </tr>
       ))
     })
@@ -49,9 +50,10 @@ class Users extends Component {
                   <Table striped>
                       <thead>
                           <tr>
-                              <th>#</th>
-                              <th>Name</th>
-                              <th>Email</th>
+                              <th>First</th>
+                              <th>Second</th>
+                              <th>Time</th>
+                              <th>Place</th>
                           </tr>
                       </thead>
                       <tbody>

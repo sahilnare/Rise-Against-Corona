@@ -106,6 +106,24 @@ const Firebase = {
         latlong: new firebase.firestore.GeoPoint(point.lat, point.lon)
       })
   },
+  handshake: (user1, user2, time, place) => {
+    return firebase
+      .firestore()
+      .collection('handshake')
+      .doc(time)
+      .set({
+        user1: user1,
+        user2: user2,
+        time: time,
+        place: place
+      })
+  },
+  getHandshake: () => {
+    return firebase
+      .firestore()
+      .collection('handshake')
+      .get()
+  },
   getMapPoints: () => {
     return firebase
       .firestore()

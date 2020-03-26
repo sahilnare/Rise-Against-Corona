@@ -69,24 +69,6 @@ class Generate extends Component {
         this.setState({nameValid: false, nameSub: true})
       }
     }
-    // else if(this.state.currentStep === 2) {
-    //   if(this.state.success.time === "c" && this.state.success.distance === "c") {
-    //     this.setState({timeValid: true, timeSub: true, disValid: true, disSub: true})
-    //     let currentStep = this.state.currentStep
-    //     currentStep = currentStep >= 2? 3: currentStep + 1
-    //     this.setState({
-    //       currentStep: currentStep
-    //     })
-    //     this.props.handleScan({
-    //       bikeId: this.state.bikeId,
-    //       time: this.state.time,
-    //       distance: this.state.distance
-    //     })
-    //   }
-    //   else {
-    //     this.setState({timeValid: false, timeSub: true, disValid: false, disSub: true})
-    //   }
-    // }
     else {
       let currentStep = this.state.currentStep
       currentStep = currentStep >= 1? 2: currentStep + 1
@@ -180,9 +162,9 @@ function EnterName(props) {
         <Row>
           <Col md={6}>
             <div className="home-hero">
-              <h1>Scan the QR code from the person's mobile</h1>
+              <h1>Enter your name to generate the QR Code</h1>
               <p className="text-muted">
-                Use the camera of the phone to scan the QR Code.
+                Your friend can then scan it and we'll record the handshake!
               </p>
             </div>
           </Col>
