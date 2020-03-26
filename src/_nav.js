@@ -25,12 +25,12 @@ export default {
     {
       name: 'Donate',
       url: '/donate',
-      icon: 'Camera',
+      icon: 'ShoppingBag',
     },
     {
       name: 'Handshakes',
       url: '/users',
-      icon: 'Coffee',
+      icon: 'UserCheck',
     },
     {
       divider: true,

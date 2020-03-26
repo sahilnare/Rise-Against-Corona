@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {
   Card,
   CardBody,
-  Table
+  Table,
+  UncontrolledAlert
 } from 'reactstrap';
 import { withFirebaseHOC } from '../../firebase'
 import { Redirect } from "react-router-dom";
