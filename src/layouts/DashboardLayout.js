@@ -191,7 +191,7 @@ class DashboardLayout extends Component {
             </Page>
           </div>
           <Footer>
-            <span>Copyright © 2019 Sahil Nare. All rights reserved.</span>
+            <span>Copyright © 2020 Team FSociety. All rights reserved.</span>
             <span>
               <a href="#!">Terms</a> | <a href="#!">Privacy Policy</a>
             </span>
