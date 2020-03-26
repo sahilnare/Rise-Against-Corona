@@ -66,6 +66,9 @@ class Map extends Component {
         }))
       });
     }
+    else {
+      console.log("Nothing");
+    }
   }
 
   // componentDidUpdate() {
@@ -79,18 +82,28 @@ class Map extends Component {
         <React.Fragment>
           <Row>
             <Col md={{ size: 8, offset: 2 }}>
-              <MapContainer
-                directions={this.state.directions}
-                onToggleOpen={this.onToggleOpen}
-                currentAction={this.props.currentAction}
-                googleMapURL={url}
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `600px`, width: `100%` }} />}
-                mapElement={<div style={{ height: `100%` }} />}
-                firebase={this.props.firebase}
-                userId={this.props.userId}
-                userName={this.props.userName}
-              />
+              {
+                this.props.currentAction === "donate" ? <MapContainer
+                  directions={this.state.directions}
+                  onToggleOpen={this.onToggleOpen}
+                  currentAction={this.props.currentAction}
+                  googleMapURL={url}
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={<div style={{ height: `600px`, width: `100%` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+                  firebase={this.props.firebase}
+                  userId={this.props.userId}
+                  userName={this.props.userName}
+                /> : <MapContainer
+                  directions={this.state.directions}
+                  currentAction={this.props.currentAction}
+                  googleMapURL={url}
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={<div style={{ height: `600px`, width: `100%` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+                />
+              }
+
             </Col>
           </Row>
           {
