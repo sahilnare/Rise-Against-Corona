@@ -217,7 +217,7 @@ class Scan extends Component {
     if(currentStep === 3) {
         return (
           <Row>
-            <Col md={{size: 6, offset: 3}}>
+            <Col md={{size: 4, offset: 4}} style={{marginTop: "20px"}}>
             <Button
               color="primary"
               onClick={this.onSubmit()}

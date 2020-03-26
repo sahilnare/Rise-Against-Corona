@@ -44,6 +44,10 @@ class Users extends Component {
 
     if(this.props.isLoggedIn) {
       return (
+          <div>
+          <UncontrolledAlert color="warning">
+            Users are handshaking!
+          </UncontrolledAlert>
           <Card>
               <CardBody>
                   Users
@@ -62,6 +66,7 @@ class Users extends Component {
                   </Table>
               </CardBody>
           </Card>
+        </div>
       )
     }
     else {
