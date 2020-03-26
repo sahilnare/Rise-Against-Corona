@@ -53,7 +53,7 @@ class Dashboard extends Component {
           </Row>
           <Row>
             <Col md={6}>
-              <Link to="scan" style={{color: "black"}}>
+              <Link to="/donate" style={{color: "black"}}>
               <Card>
                 <CardBody className="display-flex">
                   <img
@@ -73,7 +73,7 @@ class Dashboard extends Component {
               </Link>
             </Col>
             <Col md={6}>
-              <Link to="scan" style={{color: "black"}}>
+              <Link to="/receive" style={{color: "black"}}>
               <Card>
                 <CardBody className="display-flex">
                   <img
@@ -95,7 +95,7 @@ class Dashboard extends Component {
           </Row>
           <Row>
             <Col md={{size: 6, offset: 3}}>
-              <Link to="scan" style={{color: "black"}}>
+              <Link to="/home" style={{color: "black"}}>
               <Card>
                 <CardBody className="display-flex">
                   <img
