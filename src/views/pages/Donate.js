@@ -4,6 +4,7 @@ import { Col, Row } from 'reactstrap';
 import { Redirect } from "react-router-dom";
 import { withFirebaseHOC } from '../../firebase'
 import Maps from './maps/Maps';
+import { Loader } from '../../vibe/';
 // import { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer } from "react-google-maps";
 
 class Donate extends Component {
@@ -26,14 +27,16 @@ class Donate extends Component {
             medicine: point.data().medicine,
             condition: point.data().condition,
           }]
-        }))
+        }), this.getReady(snap.docs.length, i))
       })
-    }).then(this.getReady())
+    })
   }
 
-  getReady = () => {
-    console.log("getting ready");
-    this.setState({ready: true})
+  getReady = (length, i) => {
+    // console.log("getting ready", length, i);
+    if(i === length - 1) {
+      this.setState({ready: true})
+    }
   }
 
   render() {
@@ -54,7 +57,7 @@ class Donate extends Component {
           {
             this.state.ready ? (
               <Maps isLoggedIn={this.props.isLoggedIn} currentAction="donate" mapPoints={this.state.mapPoints} />
-            ) : null
+            ) : <Loader id="loading" type="bars" />
           }
         </div>
       );

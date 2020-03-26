@@ -15,10 +15,19 @@ class Map extends Component {
       directions: [
         {
           lat: 19.07283,
-          lon: 72.88261
+          lon: 72.88261,
+          isOpen: false
         }
       ]
     };
+  }
+
+  onToggleOpen = (i) => {
+    this.setState(prevState => {
+      let directions = { ...prevState.directions };
+      directions[i].isOpen = !directions.isOpen
+      return { directions };
+    })
   }
 
   componentDidMount() {
@@ -31,14 +40,16 @@ class Map extends Component {
           let directions = { ...prevState.directions };
           directions[0].lat = position.coords.latitude
           directions[0].lon = position.coords.longitude
+          directions[0].isOpen = false
           return { directions };
         }, this.getRequests())
 
       }, () => {
         console.log('Unable to get location');
+        this.getRequests()
       });
     }
-    console.log(this.props.mapPoints);
+    // console.log(this.props.mapPoints);
   }
 
   getRequests = () => {
@@ -46,7 +57,7 @@ class Map extends Component {
       this.props.mapPoints.forEach((item) => {
         console.log(item.directions)
         this.setState(state => ({
-          directions: [...state.directions, {lat: item.directions.F, lon: item.directions.V}]
+          directions: [...state.directions, {lat: item.directions.F, lon: item.directions.V, isOpen: false}]
         }))
       });
     }
