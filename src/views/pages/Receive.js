@@ -23,9 +23,6 @@ class Scan extends Component {
     };
   }
 
-  componentDidUpdate() {
-    console.log(this.state.success.food, this.state.success.number, this.state.success.medicine);
-  }
 
   componentWillUnmount() {
     // this.setState({result: false})
