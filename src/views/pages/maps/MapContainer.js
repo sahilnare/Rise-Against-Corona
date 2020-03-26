@@ -26,7 +26,8 @@ const MapContainer = withScriptjs(withGoogleMap((props) => {
                           <Button
                             color="success"
                             onClick={() => {
-                              props.firebase.addDonation(dir.userId, props.userId, props.userName)
+                              // props.firebase.addDonation(dir.userId, props.userId, props.userName)
+                              props.onToggleOpen(i)
                             }}
                             className="float-right"
                             size="sm"
@@ -59,7 +60,10 @@ const MapContainer = withScriptjs(withGoogleMap((props) => {
                           <h4>{props.directions[dir].medicine}</h4>
                           <Button
                             color="success"
-                            onClick={() => console.log("donated")}
+                            onClick={() => {
+                              props.onToggleOpen(i)
+                              // props.firebase.addDonation(props.directions[dir].userId, props.userId, props.userName)
+                            }}
                             className="float-right"
                             size="sm"
                           >
@@ -86,4 +90,4 @@ const MapContainer = withScriptjs(withGoogleMap((props) => {
   }
 ))
 
-export default withFirebaseHOC(MapContainer);
+export default MapContainer;
